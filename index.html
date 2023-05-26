@@ -19,22 +19,20 @@
     <input type="text" placeholder="Category" id="cat">
     <input placeholder="Price per Item" id="price">
     <button id="addItems">Add to List</button>
+    <button id="delete">Delete Selected Item</button>
 
     <table style="width: 75%;" id="grocery-table">
         <tr>
-            <th>Item Number</th>
+            <th>  </th>
+            <th>#</th>
             <th>Grocery Item</th>
             <th>Quantity Needed</th>
             <th>Category</th>
             <th>Price/Item</th>
         </tr>
-        <tr>
-            <td id="item-number">1</td>
-            <td id="grocery-item">banana</td>
-            <td id="quantity-needed">3</td>
-            <td id="category">fruit</td>
-            <td id="price/item">$1.99</td>
-        </tr>
+        <tbody id="tbody"></tbody>
+
+
     </table>
 </body>
 
