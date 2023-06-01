@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let groceryList = []
+    //let newList = groceryList.filter()
     let itemID = 0
 
     //funtion to use the 'Add to List' button so it runs the addGroceries function
@@ -20,7 +21,6 @@ $(document).ready(function () {
             itemPrice: $('#price').val()
         }//end groceryList object
         groceryList.push(groceries)
-        $('#tbody').empty()
         appendTable()
 
         $('#groItem').val('')
@@ -31,6 +31,7 @@ $(document).ready(function () {
 
     //function to append the table to the DOM and create a counter for itemNumber
     function appendTable() {
+        $('#tbody').empty()
         for (i = 0; i < groceryList.length; i++) {
             $('#tbody').append(`<tr id=${groceryList[i].itemNumber}> 
             <td> <input type="checkbox" id="checkbox"> </td>
@@ -40,18 +41,27 @@ $(document).ready(function () {
             <td> ${groceryList[i].category} </td>
             <td> ${groceryList[i].itemPrice} </td>
             </tr>`)
+
         }//end for loop
     }//end appendTable function
     console.log(groceryList)
 
-    $('#delete').click(function(){
-        console.log('delete button was clicked')
-        $(':checkbox:checked').closest("tr").remove()
+    $('#delete').click(function () {
+        let el = $(':checkbox:checked').closest("tr").attr("id")
+        //shorthand version: let updatedList = groceryList.filter(item => item.itemNumber !== parseInt(el))
+        let updatedList = groceryList.filter(function( item ){
+            return item.itemNumber !== parseInt(el)
+        })
+        console.log(updatedList)
+        groceryList = updatedList
+        appendTable()
         console.log(groceryList)
 
     })
 
-
+    function searchItem(){
+        
+    }
     // function deleteItem() {
     //     $('input[type="checkbox"]').click(function(){
     //         if($(this).prop("checked") == true){
